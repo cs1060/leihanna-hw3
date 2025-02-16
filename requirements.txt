@@ -1,0 +1,5 @@
+flask==3.0.2
+flask-cors==4.0.0
+pydantic==1.8.2
+python-jose==3.3.0
+python-dotenv==1.0.0
