@@ -46,6 +46,20 @@ A web-based mock interview platform that simulates interview scenarios and provi
 
 ## Setup Instructions
 
+### Prerequisites
+- Python 3.8 or higher
+- Node.js 14 or higher
+- npm (usually comes with Node.js)
+
+### Project Structure
+```
+leihanna-hw3/
+├── frontend/          # React frontend application
+├── main.py           # Flask backend server
+├── requirements.txt  # Python dependencies
+└── .env             # Environment variables (create this)
+```
+
 ### Backend Setup
 1. Create and activate virtual environment:
    ```bash
@@ -55,12 +69,19 @@ A web-based mock interview platform that simulates interview scenarios and provi
 
 2. Install dependencies:
    ```bash
-   pip install flask flask-cors
+   pip install -r requirements.txt
    ```
 
-3. Start the Flask server:
+3. Create a `.env` file in the root directory with the following content:
+   ```
+   FLASK_APP=main.py
+   FLASK_ENV=development
+   SECRET_KEY=your-secret-key-here
+   ```
+
+4. Start the Flask server:
    ```bash
-   python main.py
+   flask run --port 8080
    ```
    Server will run on http://localhost:8080
 
@@ -80,6 +101,17 @@ A web-based mock interview platform that simulates interview scenarios and provi
    npm start
    ```
    Application will run on http://localhost:3000
+
+### Troubleshooting
+- If you get a CORS error, make sure both frontend and backend servers are running
+- If you get module not found errors, ensure all dependencies are installed
+- For microphone access issues, make sure your browser has permission to use the microphone
+- If the frontend fails to start, try clearing npm cache:
+  ```bash
+  npm cache clean --force
+  rm -rf node_modules
+  npm install
+  ```
 
 ## API Endpoints
 
