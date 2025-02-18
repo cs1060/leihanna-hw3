@@ -91,12 +91,22 @@ leihanna-hw3/
    cd frontend
    ```
 
-2. Install dependencies:
+2. Clean any existing installations:
    ```bash
-   npm install
+   rm -rf node_modules package-lock.json
    ```
 
-3. Start the development server:
+3. Install dependencies with legacy peer deps:
+   ```bash
+   npm install --legacy-peer-deps
+   ```
+
+4. If you still see errors about missing react-scripts, install it explicitly:
+   ```bash
+   npm install react-scripts --legacy-peer-deps
+   ```
+
+5. Start the development server:
    ```bash
    npm start
    ```
@@ -112,6 +122,24 @@ leihanna-hw3/
   rm -rf node_modules
   npm install
   ```
+- If you cannot connect to the server:
+  1. Make sure the Flask backend is running on port 8080:
+     ```bash
+     # Kill any existing process on port 8080
+     lsof -ti:8080 | xargs kill -9 2>/dev/null || true
+     
+     # Start Flask with debug mode
+     python3 -m flask --app main run --port 8080 --debug
+     ```
+  2. Test if the server is responding:
+     ```bash
+     curl http://localhost:8080/
+     ```
+     You should see: {"status": "ok"}
+  
+  3. Make sure both servers are running:
+     - Backend: http://localhost:8080
+     - Frontend: http://localhost:3000
 
 ## API Endpoints
 
